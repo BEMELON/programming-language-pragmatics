@@ -1,0 +1,716 @@
+The files beneath this directory contain source code for almost all of
+the nontrivial code fragments in Programming Language Pragmatics, 4e.
+In most cases the code in the book does not constitute a complete and
+runnable program, so these have been extended.  In general the goal has
+been to create as small a program as possible that illustrates the
+feature in question.  The result is not always good programming style.
+
+In a few cases (generally when the point is to observe the behavior of
+the compiler itself), the example is just a single module, and will not
+produce runnable code.  These must typically be compiled with a "-c"
+command-line switch.
+
+Comments at the top of the source indicate the corresponding Example,
+Figure, or Exercise in the book.  Code that appears both as an Example
+or Exercise and as a Figure is provided in a directory named after the
+Example or Exercise.
+
+Code has been compiled and tested using the following compilers and
+interpreters.  For languages that are still actively evolving, these
+were up-to-date implementations as of the time of printing.  Some
+historic languages may not compile and run on recent OS releases.
+
+Ada: gnat (gcc) version 4.9 on MacOS 10.10
+        available from libre.adacore.com/download/
+awk: version 20070501 on MacOS 10.10
+C and C++: Apple LLVM version 6.1.0 on MacOS 10.10
+        NB: run with --std=c11 or --std=c++11)
+C#: mono mcs version 4.0.1 on MacOS 10.10
+        available from www.mono-project.com/
+Common Lisp: CMU Common Lisp 19e on Fedora Core Linux 2.6.23
+elisp: emacs version 24.4.1 on MacOS 10.10
+Erlang: erl shell version 7.0 (Erland/OTP release 18.0) on MacOS 10.10
+        available from erlang.org/
+F#: mono fsharpc version 3.1 on mono 4.0.1 on MacOS 10.10
+        available from mono-project.com
+Fortran: gfortran 5.1.0 on MacOS 10.10
+        available from gcc.gnu.org/fortran/
+Go: version 1.4.2 on MacOS 10.10
+        available from golang.org
+Haskell: ghc version 7.8.3 on MacOS 10.10
+        available from www.haskell.org
+Icon: version 9.4.2 on MacOS 10.5
+        available from www.cs.arizona.edu/icon/
+Java: Sun javac 1.8.0_20 on MacOS 10.10
+        available from oracle.com/technetwork/java/
+JavaScript: version embedded in Safari 8.0.7 browser on MacOS 10.10
+Modula-3: cm3 compiler, version 5.4.0 on Fedora Core Linux 2.6.23
+        available from modula3.elegosoft.com/
+OCaml: version 4.02.1 on MacOS 10.10
+        available from ocaml.org
+Pascal: gpc version 20070904, based on gcc-3.4.6, on MacOS 10.10
+        available from www.microbizz.nl/gpc.html
+Perl: version 5.16.3 on MacOS 10.10
+PHP: version 5.5.24 under Apache 2.4.10 on MacOS 10.10
+Prolog: swipl (SWI-Prolog) version 7.2.3 on MacOS 10.10
+        available from www.swi-prolog.org/
+Python: version 3.4.3 on MacOS 10.10
+        available from python.org
+Ruby: version 2.0.0p647 on MacOS 10.10
+        available from ruby-lang.org
+Scheme: DrRacket version 6.2 on MacOS 10.10, in R5RS mode
+        available from download.racket-lang.org
+sed: version 4.1.4 on MacOS 10.10
+Smalltalk: GNU Smalltalk (gst) version 3.1 on MacOS 10.10
+        available from smalltalk.gnu.org
+SML: Standard ML of New Jersey (sml) version 110.78 on MacOS 10.10
+        available from www.smlnj.org/
+SR: version 2.3.3 on Fedora Core Linux 2.6.23
+        available from www.cs.arizona.edu/sr
+Swift: version 1.2 on MacOS 10.10
+        available from www.apple.com/swift/
+XSLT: version embedded in Safari 8.0.7 browser on MacOS 10.10
+
+
+
+
+Code Contents
+
+
+.
+├── 01-intro
+│   ├── example_1.04
+│   │   └── gcd.c
+│   ├── example_1.05
+│   │   └── gcd.scm
+│   ├── example_1.06
+│   │   └── gcd.pr
+│   ├── example_1.20
+│   │   └── gcd2.c
+│   └── exercise_1.04
+│       └── gcd3.c
+├── 02-syntax
+│   └── nothing_here
+├── 03-naming
+│   ├── example_3.04
+│   │   └── label_name.c
+│   ├── example_3.07
+│   │   └── oops.p
+│   ├── example_3.08
+│   │   └── oops.cs
+│   ├── example_3.10
+│   │   └── let.scm
+│   ├── example_3.11
+│   │   └── foo.c
+│   ├── example_3.12
+│   │   └── swap.c
+│   ├── example_3.14-16
+│   │   └── rand.cc
+│   ├── example_3.20
+│   │   └── alias.cc
+│   ├── example_3.21
+│   │   ├── alias.c
+│   │   └── get_ptr.c
+│   ├── example_3.22-23
+│   │   └── overload.adb
+│   ├── example_3.24
+│   │   └── overload.cc
+│   ├── example_3.25
+│   │   └── infix_ops.adb
+│   ├── example_3.26
+│   │   └── infix_ops.cc
+│   ├── example_3.27
+│   │   └── infix.hs
+│   ├── example_3.31
+│   │   └── binding.py
+│   ├── example_3.32
+│   │   └── plus-x.scm
+│   ├── example_3.33
+│   │   └── Closure.java
+│   ├── example_3.34-35
+│   │   └── closure.cs
+│   ├── example_3.36
+│   │   └── closure.cc
+│   ├── example_3.37
+│   │   └── lambda.cs
+│   ├── example_3.38
+│   │   ├── maximum.cs
+│   │   ├── maximum.ml
+│   │   ├── maximum.rb
+│   │   └── maximum.scm
+│   ├── example_3.39-40
+│   │   └── lambda.cc
+│   ├── example_3.41
+│   │   └── People.java
+│   ├── example_3.43-44
+│   │   └── macros.c
+│   ├── example_3.50-51
+│   │   ├── foo.cc
+│   │   ├── foo.h
+│   │   ├── main_alt.cc
+│   │   ├── main.cc
+│   │   └── Makefile
+│   ├── example_3.52-53
+│   │   ├── bar1.java
+│   │   ├── bar2.java
+│   │   ├── bar3.java
+│   │   └── foo
+│   │       └── foo_type_1.java
+│   ├── exercise_3.07
+│   │   └── mumble.c
+│   ├── exercise_3.13
+│   │   └── scope.scm
+│   └── exercise_3.16
+│       └── Foo.cs
+├── 04-semantics
+│   ├── example_4.01
+│   │   └── Myprog.java
+│   └── example_4.02
+│       ├── a.out
+│       └── myprog.c
+├── 05-architecture
+│   └── nothing_here
+├── 06-control
+│   ├── example_6.16
+│   │   └── Wrap.java
+│   ├── example_6.17
+│   │   ├── Wrap2_generic.java
+│   │   ├── Wrap2.java
+│   │   └── Wrap3.cs
+│   ├── example_6.19
+│   │   └── oops.c
+│   ├── example_6.20-24
+│   │   └── assign.c
+│   ├── example_6.25-26
+│   │   └── multiway.py
+│   ├── example_6.27
+│   │   └── DefAssign.java
+│   ├── example_6.33
+│   │   └── precision.c
+│   ├── example_6.36-38
+│   │   ├── short_circuit.adb
+│   │   ├── short_circuit.c
+│   │   └── short_circuit.p
+│   ├── example_6.40
+│   │   ├── first_file
+│   │   ├── gotos.p
+│   │   ├── second_file
+│   │   └── third_file
+│   ├── example_6.41
+│   │   ├── catch.rb
+│   │   ├── f1
+│   │   ├── f2
+│   │   └── f3
+│   ├── example_6.43-44
+│   │   └── cont.rb
+│   ├── example_6.47-48
+│   │   ├── cond.scm
+│   │   └── ifthenelse.rb
+│   ├── example_6.52
+│   │   └── selection.adb
+│   ├── example_6.55
+│   │   └── fall_through.c
+│   ├── example_6.66-67
+│   │   └── iter.py
+│   ├── example_6.68
+│   │   └── Tree.java
+│   ├── example_6.69
+│   │   └── README
+│   ├── example_6.70
+│   │   └── iter-func.scm
+│   ├── example_6.71
+│   │   └── iter-block.st
+│   ├── example_6.72
+│   │   └── uptoby.rb
+│   ├── example_6.73
+│   │   └── README
+│   ├── example_6.75-76
+│   │   ├── post_test.c
+│   │   └── post_test.p
+│   ├── example_6.77-79
+│   │   ├── mid_test.adb
+│   │   ├── mid_test.c
+│   │   └── mid_test.perl
+│   ├── example_6.80-83
+│   │   └── iter_rec.c
+│   ├── example_6.84
+│   │   └── tail-rec.scm
+│   ├── example_6.85-87
+│   │   ├── fib.c
+│   │   └── fib.scm
+│   ├── example_6.88
+│   │   └── naturals.scm
+│   ├── example_6.89-92
+│   │   └── generators.icn
+│   ├── example_6.94-95
+│   │   └── nondeterminism.sr
+│   ├── example_6.97
+│   │   └── nd_server.sr
+│   ├── example_6.99
+│   │   └── silly.sr
+│   ├── exercise_6.26
+│   │   └── Rubin.c
+│   └── exploration_6.40
+│       └── Duff.c
+├── 07-type_systems
+│   ├── example_7.04-08
+│   │   ├── ada_defs.adb
+│   │   ├── C_defs.c
+│   │   ├── OCaml_defs.ml
+│   │   ├── Pascal_defs.p
+│   │   └── Swift_defs.swift
+│   ├── example_7.09-16
+│   │   ├── ada_defs.adb
+│   │   ├── C_defs.c
+│   │   ├── Java_defs.java
+│   │   └── Pascal_defs.p
+│   ├── example_7.23-32
+│   │   ├── ada_types.adb
+│   │   ├── Cpp_types.cc
+│   │   ├── C_types.c
+│   │   └── Java_types.java
+│   ├── example_7.35-37
+│   │   ├── Cpp_inference.cc
+│   │   └── Csharp_inference.cs
+│   ├── example_7.38-42
+│   │   └── types.ml
+│   ├── example_7.44-46
+│   │   ├── duck.rb
+│   │   ├── poly.ml
+│   │   └── poly.scm
+│   ├── example_7.47-49
+│   │   ├── generic_min.adb
+│   │   ├── generic_queue.cc
+│   │   └── overload_min.adb
+│   ├── example_7.50-53
+│   │   ├── ada_sorting.adb
+│   │   ├── Cpp_sorting.cc
+│   │   ├── Csharp_sorting.cs
+│   │   └── Java_sorting.java
+│   ├── example_7.54-56
+│   │   └── README
+│   ├── example_7.55
+│   │   └── best.cc
+│   ├── example_7.56-57
+│   │   ├── arbiter.cc
+│   │   ├── arbiter.h
+│   │   └── arbiter_main.cc
+│   ├── example_7.57
+│   │   └── equality.scm
+│   ├── example_7.58
+│   │   └── README
+│   ├── example_7.59-60
+│   │   └── Best.java
+│   ├── example_7.61-63
+│   │   └── Erasure.java
+│   ├── example_7.66-67
+│   │   └── Best.cs
+│   ├── example_7.69
+│   │   └── Best.cs
+│   ├── exercise_7.17
+│   │   └── oops.cc
+│   ├── exercise_7.19
+│   │   └── apply.adb
+│   ├── exercise_7.26
+│   │   └── list_coercion.cc
+│   └── exercise_7.27
+│       └── clone.cc
+├── 08-composite_types
+│   ├── example_8.01-04
+│   │   ├── OCaml_types.ml
+│   │   ├── SML_types.sml
+│   │   └── structs.c
+│   ├── example_8.06-09
+│   │   ├── Nested.java
+│   │   ├── packing.adb
+│   │   └── structs.c
+│   ├── example_8.11
+│   │   └── variant.c
+│   ├── example_8.13-16
+│   │   ├── ada_arrays.adb
+│   │   ├── C_arrays.c
+│   │   ├── Fortran_arrays.f90
+│   │   ├── indexer.cs
+│   │   └── Main.m3
+│   ├── example_8.17
+│   │   └── slices.f90
+│   ├── example_8.18
+│   │   └── square.c
+│   ├── example_8.19
+│   │   ├── dynarray.adb
+│   │   └── dynarray.c
+│   ├── example_8.20
+│   │   └── alloc.f90
+│   ├── example_8.21
+│   │   ├── strings.cs
+│   │   └── strings.java
+│   ├── example_8.23
+│   │   ├── column_major.f90
+│   │   └── row_major.c
+│   ├── example_8.24
+│   │   └── layout.c
+│   ├── example_8.32
+│   │   └── sets.go
+│   ├── example_8.33-43
+│   │   ├── ada_ptrs.adb
+│   │   ├── C_ptrs.c
+│   │   ├── Java_refs.java
+│   │   ├── OCaml_refs.ml
+│   │   └── Scheme_refs.scm
+│   ├── example_8.44-48
+│   │   └── C_array_pointers.c
+│   ├── example_8.50-51
+│   │   └── dangling.cc
+│   ├── example_8.55-58
+│   │   ├── Fsharp_comp.fs
+│   │   ├── Haskell_comp.hi
+│   │   ├── Haskell_comp.hs
+│   │   ├── OCaml_lists.ml
+│   │   ├── Python_comp.py
+│   │   └── Scheme_lists.scm
+│   ├── example_8.59-67
+│   │   ├── derived.java
+│   │   ├── discriminants.adb
+│   │   ├── equiv.f
+│   │   ├── unions.c
+│   │   ├── unions.cc
+│   │   ├── variants.ml
+│   │   └── variants.p
+│   ├── example_8.73-75
+│   │   └── tio.f
+│   ├── example_8.76-77
+│   │   ├── out
+│   │   └── tio.adb
+│   ├── example_8.78-80
+│   │   └── tio.c
+│   ├── example_8.81-84
+│   │   └── tio.cc
+│   ├── exercise_8.21
+│   │   └── recursive.scm
+│   └── sidebar_8.3
+│       └── indexer.cs
+├── 09-subroutines
+│   ├── example_9.06-07
+│   │   ├── ada_inline.adb
+│   │   ├── C_inline.c
+│   │   └── Cpp_fringe.cc
+│   ├── example_9.08
+│   │   └── infix.sml
+│   ├── example_9.13-14
+│   │   └── pass_pointer.c
+│   ├── example_9.15-18
+│   │   └── Cpp_refs.cc
+│   ├── example_9.19
+│   │   ├── obj.cc
+│   │   ├── obj.h
+│   │   └── rvalues.cc
+│   ├── example_9.20-23
+│   │   ├── Ada_apply.adb
+│   │   ├── C_apply.c
+│   │   ├── OCaml_apply.ml
+│   │   └── Scheme_apply.scm
+│   ├── example_9.25
+│   │   └── named_args.adb
+│   ├── example_9.27-29
+│   │   ├── Csharp_varargs.cs
+│   │   ├── C_varargs.c
+│   │   └── Java_varargs.java
+│   ├── example_9.31-33
+│   │   ├── rtn.adb
+│   │   ├── rtn.go
+│   │   └── rtn.py
+│   ├── example_9.35-45
+│   │   ├── Cpp_exceptions.cc
+│   │   ├── C_setjmp.c
+│   │   ├── foo.txt
+│   │   ├── OCaml_exceptions.ml
+│   │   └── Python_finally.py
+│   ├── example_9.51-55
+│   │   ├── Events.cs
+│   │   └── Events.java
+│   ├── example_9.64
+│   │   └── README
+│   ├── example_9.67-68
+│   │   ├── IterTest.cs
+│   │   ├── IterTestObj.cs
+│   │   └── Tree.cs
+│   ├── exercise_9.02
+│   │   └── string_map.cc
+│   ├── exercise_9.04
+│   │   └── bad.c
+│   ├── exercise_9.14
+│   │   └── packing.p
+│   └── exercise_9.23
+│       └── signal_demo.c
+├── 10-objects
+│   ├── example_10.01-13
+│   │   ├── list.cc
+│   │   ├── properties.cs
+│   │   └── README
+│   ├── example_10.14-15
+│   │   └── gp_list.cc
+│   ├── example_10.17
+│   │   └── t_list.cc
+│   ├── example_10.18
+│   │   ├── foo.adb
+│   │   ├── foo.ads
+│   │   └── test_foo.adb
+│   ├── example_10.20-21
+│   │   └── hiding.cc
+│   ├── example_10.22
+│   │   └── Nested.java
+│   ├── example_10.23
+│   │   ├── g_list.adb
+│   │   ├── g_list.ads
+│   │   ├── g_list-queue.adb
+│   │   ├── g_list-queue.ads
+│   │   └── list_test.adb
+│   ├── example_10.24
+│   │   └── extension.cs
+│   ├── example_10.25-26
+│   │   └── README
+│   ├── example_10.27-29
+│   │   └── constructors.cc
+│   ├── example_10.32-34
+│   │   └── class_args.cc
+│   ├── example_10.36
+│   │   └── queue.cc
+│   ├── example_10.37-43
+│   │   ├── people.adb
+│   │   ├── people.ads
+│   │   ├── people.cc
+│   │   └── test_people.adb
+│   ├── example_10.47
+│   │   └── casts.cc
+│   ├── example_10.49-50
+│   │   └── generic_closure.cc
+│   ├── example_10.52-54
+│   │   └── plp
+│   │       ├── Backup.java
+│   │       └── Mixins.java
+│   ├── example_10.61
+│   │   └── people.cc
+│   ├── example_10.62
+│   │   └── people.cc
+│   ├── example_10.63-64
+│   │   └── repeated_people.cc
+│   ├── example_10.65
+│   │   └── README
+│   ├── example_10.66
+│   │   └── replicated.cc
+│   ├── example_10.67
+│   │   └── shared.cc
+│   ├── example_10.71-76
+│   │   └── examples.st
+│   ├── exercise_10.21
+│   │   └── Ping.java
+│   └── exercise_10.27
+│       └── mem_ptr.cc
+├── 11-functional
+│   ├── example_11.01-19
+│   │   └── scheme_basics.scm
+│   ├── example_11.20
+│   │   └── dfa.scm
+│   ├── example_11.21-53
+│   │   └── ocaml_basics.ml
+│   ├── example_11.54
+│   │   └── dfa.ml
+│   ├── example_11.55-57
+│   │   └── eval_order.scm
+│   ├── example_11.58-59
+│   │   └── README
+│   ├── example_11.60-61
+│   │   └── rand.hs
+│   ├── example_11.62
+│   │   └── composition.hs
+│   ├── example_11.63
+│   │   └── simple.hs
+│   ├── example_11.64-67
+│   │   ├── folding.ml
+│   │   └── higher_functions.scm
+│   ├── example_11.68-75
+│   │   ├── curry.ml
+│   │   └── curry.scm
+│   ├── exercise_11.05
+│   │   └── unique.scm
+│   ├── exercise_11.06
+│   │   └── tail_rec.scm
+│   ├── exercise_11.15
+│   │   └── parse_gen.scm
+│   └── exercise_11.18
+│       └── delayed.ml
+├── 12-logic
+│   ├── example_12.06-18
+│   │   └── queries.pl
+│   ├── example_12.19
+│   │   └── README
+│   ├── example_12.20-33
+│   │   ├── more.pl
+│   │   └── ttt.pl
+│   ├── example_12.35-36
+│   │   └── sorting.pl
+│   ├── example_12.37-38
+│   │   └── negation.pl
+│   └── exercise_12.15
+│       └── ins_sort.c
+├── 13-concurrency
+│   ├── example_13.01-02
+│   │   └── parfor.cs
+│   ├── example_13.07-17
+│   │   ├── for_all.f95
+│   │   ├── OpenMP.c
+│   │   ├── parfor.cs
+│   │   ├── Rend2.java
+│   │   ├── Rend5.java
+│   │   ├── Rend.cs
+│   │   └── tasks.adb
+│   ├── example_13.51
+│   │   └── Futures.cs
+│   ├── example_13.55-56
+│   │   └── ping.go
+│   ├── example_13.57-58
+│   │   ├── TCP.java
+│   │   └── UDP.java
+│   ├── example_13.62
+│   │   └── bb.adb
+│   ├── example_13.64
+│   │   └── bb.go
+│   └── example_13.65-66
+│       ├── bb.erl
+│       └── peek.erl
+├── 14-scripting
+│   ├── example_14.01
+│   │   ├── hello.adb
+│   │   ├── Hello.java
+│   │   ├── hello.perl
+│   │   ├── hello.py
+│   │   └── hello.rb
+│   ├── example_14.02
+│   │   └── coerce.perl
+│   ├── example_14.03-17
+│   │   └── README
+│   ├── example_14.18
+│   │   ├── html_headers.sed
+│   │   └── test.html
+│   ├── example_14.20
+│   │   ├── html_headers.awk
+│   │   └── test.html
+│   ├── example_14.22
+│   │   ├── caps.awk
+│   │   └── titles
+│   ├── example_14.23
+│   │   ├── html_headers.perl
+│   │   └── test.html
+│   ├── example_14.24
+│   │   ├── loop
+│   │   ├── loop.c
+│   │   └── skill
+│   ├── example_14.25
+│   │   ├── loop.c
+│   │   └── skill.py
+│   ├── example_14.27
+│   │   ├── loop.c
+│   │   └── skill.rb
+│   ├── example_14.28
+│   │   └── number_lines.el
+│   ├── example_14.29
+│   │   └── status.perl
+│   ├── example_14.30
+│   │   ├── adder.html
+│   │   └── add.perl
+│   ├── example_14.31
+│   │   └── status.php
+│   ├── example_14.32
+│   │   └── loop.php
+│   ├── example_14.33
+│   │   ├── adder2.html
+│   │   └── add.php
+│   ├── example_14.34
+│   │   └── adder.php
+│   ├── example_14.35
+│   │   └── js_adder.html
+│   ├── example_14.37
+│   │   └── scope.py
+│   ├── example_14.39
+│   │   └── scope.perl
+│   ├── example_14.40
+│   │   └── scope2.perl
+│   ├── example_14.57
+│   │   └── capture.perl
+│   ├── example_14.58
+│   │   └── capture2.perl
+│   ├── example_14.59-67
+│   │   ├── misc.perl
+│   │   ├── misc.py
+│   │   └── misc.rb
+│   ├── example_14.70-71
+│   │   └── context.perl
+│   ├── example_14.72-75
+│   │   └── objects.perl
+│   ├── example_14.76-78
+│   │   └── js_objects.html
+│   ├── example_14.79
+│   │   └── elaboration.rb
+│   ├── example_14.83
+│   │   └── fav.html
+│   ├── example_14.85
+│   │   ├── bib.xml
+│   │   └── bib.xsl
+│   ├── exercise_14.11
+│   │   └── nested.perl
+│   ├── exercise_14.13
+│   │   └── nested.rb
+│   ├── exercise_14.16
+│   │   └── capture3.perl
+│   ├── exercise_14.17
+│   │   ├── broken.sed
+│   │   └── test.html
+│   ├── sidebar_14.10
+│   │   └── re_comp.perl
+│   └── sidebar_14.12
+│       └── README
+├── 15-codegen
+│   └── nothing_here
+├── 16-runtime
+│   ├── example_16.02
+│   │   └── Hello.java
+│   ├── example_16.03
+│   │   └── LLset.java
+│   ├── example_16.06
+│   │   ├── Expr.cs
+│   │   └── expr.scm
+│   ├── example_16.07
+│   │   └── compile.cl
+│   ├── example_16.08
+│   │   └── compile.perl
+│   ├── example_16.18
+│   │   └── MyQueue.java
+│   ├── example_16.20-21
+│   │   └── Reflect.java
+│   ├── example_16.22
+│   │   └── Listing.java
+│   ├── example_16.23
+│   │   └── Invoking.java
+│   ├── example_16.24
+│   │   └── reflect.rb
+│   ├── example_16.25
+│   │   └── Annotate.java
+│   ├── example_16.26
+│   │   └── Attr.cs
+│   ├── example_16.39
+│   │   ├── Reflect.cs
+│   │   └── Reflect.java
+│   └── example_16.40
+│       └── LLset.cs
+├── 17-improvement
+│   ├── example_17.10
+│   │   └── comb.c
+│   ├── exercise_17.23
+│   │   └── mat_mult.c
+│   └── exercise_17.24
+│       └── gauss.c
+├── README
+└── tree.md
+
+256 directories, 377 files
+
